@@ -8,33 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 35 25% 98%;
+    --foreground: 20 14% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 30 20% 99%;
+    --card-foreground: 20 14% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 30 20% 99%;
+    --popover-foreground: 20 14% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 38% 88%;
+    --secondary-foreground: 20 14% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 25% 92%;
+    --muted-foreground: 25 8% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 35% 85%;
+    --accent-foreground: 20 14% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 142 76% 36%;
+
+    /* Nature-inspired custom colors */
+    --forest-green: 142 76% 36%;
+    --moss-green: 120 25% 45%;
+    --earth-brown: 25 35% 25%;
+    --sunset-orange: 25 85% 60%;
+    --sky-blue: 200 50% 60%;
+    --warm-cream: 45 60% 95%;
+    
+    /* Gradients */
+    --gradient-nature: linear-gradient(135deg, hsl(var(--forest-green)), hsl(var(--moss-green)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunset-orange)), hsl(var(--forest-green)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--earth-brown)), hsl(var(--forest-green)));
+    
+    /* Shadows */
+    --shadow-nature: 0 10px 30px -5px hsl(var(--forest-green) / 0.2);
+    --shadow-card: 0 4px 20px -2px hsl(var(--earth-brown) / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
