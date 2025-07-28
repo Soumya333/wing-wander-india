@@ -39,6 +39,414 @@ export interface Homestay {
 
 export const destinations: Destination[] = [
   {
+    id: "andaman",
+    name: "Andaman Islands",
+    location: "Port Blair, Andaman & Nicobar Islands",
+    state: "Andaman & Nicobar Islands",
+    image: "/src/assets/andaman-islands.jpg",
+    description: "Pristine tropical islands with endemic bird species, coral reefs, and unique coastal ecosystems offering exceptional birding opportunities.",
+    bestTime: "November to April (dry season)",
+    birdSpecies: ["Andaman Drongo", "Andaman Woodpecker", "Andaman Bulbul", "Andaman Cuckooshrike", "Nicobar Pigeon", "Andaman Serpent Eagle"],
+    guides: [
+      {
+        name: "Dr. Rauf Ali",
+        experience: "20+ years",
+        contact: "+91 9876543250",
+        specialization: "Endemic island species and marine birding",
+        price: "₹3,500/day"
+      },
+      {
+        name: "John Prakash",
+        experience: "15+ years",
+        contact: "+91 9876543251",
+        specialization: "Coastal and forest birds",
+        price: "₹2,800/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Veer Savarkar International Airport, Port Blair",
+      nearestRailway: "No railway connectivity - flight only",
+      roadAccess: "Island roads connect major birding sites",
+      localTransport: "Rental cars, boats for island hopping"
+    },
+    homestays: [
+      {
+        name: "Island Paradise Homestay",
+        type: "Beachfront cottage",
+        price: "₹4,200/night",
+        contact: "+91 9876543252",
+        amenities: ["Beach access", "Snorkeling gear", "Local seafood", "Boat trips"],
+        distance: "15 km from Port Blair"
+      },
+      {
+        name: "Tropical Bird Lodge",
+        type: "Eco-resort",
+        price: "₹5,500/night",
+        contact: "+91 9876543253",
+        amenities: ["Forest trails", "Marine excursions", "Bird photography hides", "Diving facilities"],
+        distance: "25 km from Port Blair"
+      }
+    ],
+    highlights: ["Endemic island species", "Marine and coastal birding", "Coral reef ecosystem", "Pristine tropical forests"]
+  },
+  {
+    id: "corbett",
+    name: "Corbett Tiger Reserve",
+    location: "Ramnagar, Uttarakhand",
+    state: "Uttarakhand",
+    image: "/src/assets/corbett-tiger-reserve.jpg",
+    description: "India's oldest national park, famous for tigers and diverse bird life in sal forests, grasslands, and riverine habitats.",
+    bestTime: "November to June (park open season)",
+    birdSpecies: ["Great Hornbill", "Pallas's Fish Eagle", "Brown Fish Owl", "Crested Serpent Eagle", "Red Junglefowl", "White-capped Redstart"],
+    guides: [
+      {
+        name: "Vikram Singh Bisht",
+        experience: "25+ years",
+        contact: "+91 9876543254",
+        specialization: "Tigers and forest birds",
+        price: "₹3,200/day"
+      },
+      {
+        name: "Rajesh Kumar",
+        experience: "18+ years",
+        contact: "+91 9876543255",
+        specialization: "Riverine birds and photography",
+        price: "₹2,800/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Pantnagar Airport (80 km)",
+      nearestRailway: "Ramnagar Railway Station (1 km)",
+      roadAccess: "Well-connected from Delhi and Dehradun",
+      localTransport: "Park jeeps and canter vehicles for safaris"
+    },
+    homestays: [
+      {
+        name: "Corbett River View",
+        type: "Riverside lodge",
+        price: "₹4,800/night",
+        contact: "+91 9876543256",
+        amenities: ["River views", "Wildlife safaris", "Fishing", "Nature walks"],
+        distance: "2 km from Dhangari gate"
+      },
+      {
+        name: "Tiger's Den Homestay",
+        type: "Forest lodge",
+        price: "₹3,500/night",
+        contact: "+91 9876543257",
+        amenities: ["Jungle views", "Campfire", "Bird watching towers", "Local cuisine"],
+        distance: "5 km from park entrance"
+      }
+    ],
+    highlights: ["India's oldest national park", "Tiger and bird combination", "Ramganga riverine ecosystem", "400+ bird species"]
+  },
+  {
+    id: "maguri-beel",
+    name: "Maguri Beel",
+    location: "Dibru-Saikhowa, Assam",
+    state: "Assam",
+    image: "/src/assets/maguri-beel-assam.jpg",
+    description: "A large wetland near Dibru-Saikhowa National Park, known for rare waterfowl and the critically endangered White-winged Duck.",
+    bestTime: "November to March (winter season)",
+    birdSpecies: ["White-winged Duck", "Greater Adjutant", "Spot-billed Pelican", "Ferruginous Duck", "Baer's Pochard", "Cotton Pygmy Goose"],
+    guides: [
+      {
+        name: "Prasanta Boro",
+        experience: "22+ years",
+        contact: "+91 9876543258",
+        specialization: "White-winged Duck and wetland species",
+        price: "₹2,500/day"
+      },
+      {
+        name: "Mrinal Kalita",
+        experience: "16+ years",
+        contact: "+91 9876543259",
+        specialization: "Boat birding and waterfowl",
+        price: "₹2,200/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Dibrugarh Airport (45 km)",
+      nearestRailway: "Tinsukia Junction (25 km)",
+      roadAccess: "Via Tinsukia-Guijan road",
+      localTransport: "Boats essential for wetland access"
+    },
+    homestays: [
+      {
+        name: "Wetland Birder's Home",
+        type: "Village homestay",
+        price: "₹2,200/night",
+        contact: "+91 9876543260",
+        amenities: ["Boat access", "Local meals", "Early morning birding", "Fishing"],
+        distance: "1 km from wetland"
+      },
+      {
+        name: "Brahmaputra Lodge",
+        type: "Eco-lodge",
+        price: "₹3,800/night",
+        contact: "+91 9876543261",
+        amenities: ["River views", "Boat safaris", "Cultural programs", "Organic food"],
+        distance: "8 km from Maguri Beel"
+      }
+    ],
+    highlights: ["White-winged Duck habitat", "Largest wetland in Assam", "Critically endangered species", "Boat birding paradise"]
+  },
+  {
+    id: "chambal",
+    name: "Chambal River",
+    location: "National Chambal Sanctuary, MP/UP/Rajasthan",
+    state: "Madhya Pradesh",
+    image: "/src/assets/chambal-river.jpg",
+    description: "A pristine river system with dramatic ravines, home to gharials, gangetic dolphins, and diverse riverine bird species.",
+    bestTime: "October to March (pleasant weather)",
+    birdSpecies: ["Indian Skimmer", "Black-bellied Tern", "River Tern", "Sarus Crane", "Bar-headed Goose", "Red-naped Ibis"],
+    guides: [
+      {
+        name: "Faiyaz Khudsar",
+        experience: "28+ years",
+        contact: "+91 9876543262",
+        specialization: "River ecosystem and Indian Skimmer",
+        price: "₹3,000/day"
+      },
+      {
+        name: "Santosh Yadav",
+        experience: "20+ years",
+        contact: "+91 9876543263",
+        specialization: "Boat birding and gharial conservation",
+        price: "₹2,500/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Gwalior Airport (65 km from Morena)",
+      nearestRailway: "Morena Railway Station (15 km)",
+      roadAccess: "Well-connected from Agra and Gwalior",
+      localTransport: "Boats for river safaris, local vehicles"
+    },
+    homestays: [
+      {
+        name: "Chambal Safari Lodge",
+        type: "Riverside camp",
+        price: "₹4,200/night",
+        contact: "+91 9876543264",
+        amenities: ["River safaris", "Ravine walks", "Photography hides", "Local cuisine"],
+        distance: "3 km from sanctuary"
+      },
+      {
+        name: "Ravine View Homestay",
+        type: "Heritage property",
+        price: "₹3,500/night",
+        contact: "+91 9876543265",
+        amenities: ["Ravine views", "Boat trips", "Cultural tours", "Traditional meals"],
+        distance: "5 km from river"
+      }
+    ],
+    highlights: ["Indian Skimmer breeding site", "Pristine river ecosystem", "Gharial and dolphin spotting", "Dramatic ravine landscape"]
+  },
+  {
+    id: "nainital",
+    name: "Nainital",
+    location: "Nainital, Uttarakhand",
+    state: "Uttarakhand",
+    image: "/src/assets/nainital-uttarakhand.jpg",
+    description: "A picturesque hill station with lakes and oak forests, offering excellent birding opportunities in temperate Himalayan habitat.",
+    bestTime: "March to June and September to November",
+    birdSpecies: ["Himalayan Griffon", "Lammergeier", "Khalij Pheasant", "Cheer Pheasant", "White-capped Redstart", "Himalayan Bulbul"],
+    guides: [
+      {
+        name: "Harish Rawat",
+        experience: "24+ years",
+        contact: "+91 9876543266",
+        specialization: "Hill station birds and lake ecosystem",
+        price: "₹2,500/day"
+      },
+      {
+        name: "Deepak Bisht",
+        experience: "18+ years",
+        contact: "+91 9876543267",
+        specialization: "Oak forest birds and photography",
+        price: "₹2,200/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Pantnagar Airport (65 km)",
+      nearestRailway: "Kathgodam (35 km)",
+      roadAccess: "Well-connected hill roads from plains",
+      localTransport: "Local taxis and shared vehicles"
+    },
+    homestays: [
+      {
+        name: "Lake View Bird Lodge",
+        type: "Heritage hotel",
+        price: "₹4,500/night",
+        contact: "+91 9876543268",
+        amenities: ["Lake views", "Colonial architecture", "Garden birding", "Boating"],
+        distance: "2 km from Naini Lake"
+      },
+      {
+        name: "Oak Forest Retreat",
+        type: "Mountain lodge",
+        price: "₹3,200/night",
+        contact: "+91 9876543269",
+        amenities: ["Forest setting", "Nature trails", "Sunrise views", "Local cuisine"],
+        distance: "8 km from Nainital"
+      }
+    ],
+    highlights: ["Lake and forest birding", "Temperate Himalayan species", "Hill station charm", "Photography opportunities"]
+  },
+  {
+    id: "nameri",
+    name: "Nameri National Park",
+    location: "Sonitpur, Assam",
+    state: "Assam",
+    image: "/src/assets/nameri-national-park.jpg",
+    description: "A pristine park on the foothills of Eastern Himalayas, known for the rare White-winged Duck and diverse forest birds.",
+    bestTime: "November to April (dry season)",
+    birdSpecies: ["White-winged Duck", "Wreathed Hornbill", "Great Hornbill", "Ibisbill", "Slender-billed Scimitar Babbler", "Blue-naped Pitta"],
+    guides: [
+      {
+        name: "Anwaruddin Choudhury",
+        experience: "30+ years",
+        contact: "+91 9876543270",
+        specialization: "White-winged Duck and hornbills",
+        price: "₹3,500/day"
+      },
+      {
+        name: "Bikash Duarah",
+        experience: "20+ years",
+        contact: "+91 9876543271",
+        specialization: "Forest birds and river birding",
+        price: "₹2,800/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Tezpur Airport (35 km)",
+      nearestRailway: "Rangapara North (50 km)",
+      roadAccess: "Via Tezpur-Bhalukpong highway",
+      localTransport: "Park vehicles and boats for river access"
+    },
+    homestays: [
+      {
+        name: "Hornbill Nest Eco Camp",
+        type: "Eco-camp",
+        price: "₹3,800/night",
+        contact: "+91 9876543272",
+        amenities: ["Forest proximity", "River rafting", "Angling", "Cultural shows"],
+        distance: "2 km from park gate"
+      },
+      {
+        name: "Jia Bhoroli Lodge",
+        type: "Riverside lodge",
+        price: "₹4,500/night",
+        contact: "+91 9876543273",
+        amenities: ["River views", "Elephant safaris", "Fishing", "Nature walks"],
+        distance: "5 km from park"
+      }
+    ],
+    highlights: ["White-winged Duck conservation", "Hornbill diversity", "River and forest ecosystem", "Elephant corridor"]
+  },
+  {
+    id: "singalila",
+    name: "Singalila Ridge",
+    location: "Singalila National Park, West Bengal",
+    state: "West Bengal",
+    image: "/src/assets/singalila-ridge.jpg",
+    description: "High-altitude ridge walk with rhododendron forests and alpine meadows, offering spectacular mountain views and unique birds.",
+    bestTime: "March to May and October to December",
+    birdSpecies: ["Satyr Tragopan", "Blood Pheasant", "Fire-tailed Myzornis", "Himalayan Monal", "Golden-throated Barbet", "Red-billed Chough"],
+    guides: [
+      {
+        name: "Pemba Sherpa",
+        experience: "26+ years",
+        contact: "+91 9876543274",
+        specialization: "High-altitude species and mountain ecology",
+        price: "₹3,000/day"
+      },
+      {
+        name: "Ang Tshering",
+        experience: "20+ years",
+        contact: "+91 9876543275",
+        specialization: "Rhododendron forest birds and trekking",
+        price: "₹2,500/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Bagdogra Airport (95 km)",
+      nearestRailway: "New Jalpaiguri (90 km)",
+      roadAccess: "Via Darjeeling to Manebhanjyang",
+      localTransport: "Trekking required, porters available"
+    },
+    homestays: [
+      {
+        name: "Mountain Peak Lodge",
+        type: "High-altitude lodge",
+        price: "₹3,500/night",
+        contact: "+91 9876543276",
+        amenities: ["Mountain views", "Kanchenjunga views", "Trekking support", "Hot meals"],
+        distance: "Sandakphu village"
+      },
+      {
+        name: "Rhododendron Camp",
+        type: "Trekking camp",
+        price: "₹2,800/night",
+        contact: "+91 9876543277",
+        amenities: ["Camping gear", "Guide service", "Packed meals", "Photography tours"],
+        distance: "Phalut area"
+      }
+    ],
+    highlights: ["Kanchenjunga views", "Rhododendron blooms", "High-altitude specialties", "Trekking bird watching"]
+  },
+  {
+    id: "sundarbans",
+    name: "Sundarbans",
+    location: "Sundarbans National Park, West Bengal",
+    state: "West Bengal",
+    image: "/src/assets/sundarbans-mangroves.jpg",
+    description: "The world's largest mangrove forest and tiger reserve, offering unique estuarine bird species and tidal creek birding.",
+    bestTime: "September to March (post-monsoon to winter)",
+    birdSpecies: ["Masked Finfoot", "Brown-winged Kingfisher", "Mangrove Pitta", "Collared Kingfisher", "White-bellied Sea Eagle", "Oriental Darter"],
+    guides: [
+      {
+        name: "Subhendu Mazumdar",
+        experience: "28+ years",
+        contact: "+91 9876543278",
+        specialization: "Mangrove ecosystem and boat birding",
+        price: "₹3,200/day"
+      },
+      {
+        name: "Tapas Das",
+        experience: "22+ years",
+        contact: "+91 9876543279",
+        specialization: "Tidal creek birds and tiger tracking",
+        price: "₹2,800/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Netaji Subhas Chandra Bose Airport, Kolkata (150 km)",
+      nearestRailway: "Canning Railway Station (48 km)",
+      roadAccess: "Via Kolkata to Gosaba by road",
+      localTransport: "Boats essential for forest access"
+    },
+    homestays: [
+      {
+        name: "Mangrove Heritage Stay",
+        type: "Eco-heritage lodge",
+        price: "₹4,800/night",
+        contact: "+91 9876543280",
+        amenities: ["Mangrove tours", "Tiger safari", "Cultural programs", "Local seafood"],
+        distance: "Sajnekhali area"
+      },
+      {
+        name: "Tiger Creek Homestay",
+        type: "Riverside cottage",
+        price: "₹3,500/night",
+        contact: "+91 9876543281",
+        amenities: ["Creek views", "Boat rides", "Fishing", "Bird watching towers"],
+        distance: "Sundarbans core area"
+      }
+    ],
+    highlights: ["World's largest mangrove forest", "Royal Bengal Tiger habitat", "Unique estuarine birds", "Tidal ecosystem birding"]
+  },
+  {
     id: "bharatpur",
     name: "Keoladeo National Park",
     location: "Bharatpur, Rajasthan",
