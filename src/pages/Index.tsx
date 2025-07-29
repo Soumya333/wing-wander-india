@@ -4,6 +4,7 @@ import PlanTripForm from "@/components/PlanTripForm";
 import Footer from "@/components/Footer";
 import SocialLinks from "@/components/SocialLinks";
 import Testimonials from "@/components/Testimonials";
+import ConservationContribute from "@/components/ConservationContribute";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
@@ -14,15 +15,19 @@ const Index = () => {
       <div className="py-20 px-6 bg-background">
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="destinations" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="destinations">Destinations</TabsTrigger>
               <TabsTrigger value="plan-trip">Plan Your Trip</TabsTrigger>
+              <TabsTrigger value="conservation">Contribute to Conservation</TabsTrigger>
             </TabsList>
             <TabsContent value="destinations">
               <DestinationGrid />
             </TabsContent>
             <TabsContent value="plan-trip">
               <PlanTripForm />
+            </TabsContent>
+            <TabsContent value="conservation">
+              <ConservationContribute />
             </TabsContent>
           </Tabs>
         </div>
