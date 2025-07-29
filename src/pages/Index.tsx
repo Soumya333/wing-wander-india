@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import DestinationGrid from "@/components/DestinationGrid";
 import PlanTripForm from "@/components/PlanTripForm";
+import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
