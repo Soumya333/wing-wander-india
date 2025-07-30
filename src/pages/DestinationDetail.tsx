@@ -132,6 +132,17 @@ const DestinationDetail = () => {
                     <div className="text-sm text-muted-foreground">{destination.howToReach.localTransport}</div>
                   </div>
                 </div>
+                <div className="pt-4 border-t">
+                  <a 
+                    href={destination.howToReach.googleMapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-forest-green text-white rounded-lg hover:bg-forest-green/80 transition-colors text-sm font-medium"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    Get Road Directions
+                  </a>
+                </div>
               </CardContent>
             </Card>
           </div>
