@@ -15,10 +15,10 @@ const Index = () => {
       <div className="py-20 px-6 bg-background">
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="destinations" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="destinations">Destinations</TabsTrigger>
-              <TabsTrigger value="plan-trip">Plan Your Trip</TabsTrigger>
-              <TabsTrigger value="conservation">Contribute to Conservation</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 mb-8 bg-gradient-to-r from-forest-green/10 via-warm-cream/10 to-sky-blue/10 p-1 rounded-lg">
+              <TabsTrigger value="destinations" className="data-[state=active]:bg-forest-green data-[state=active]:text-white">Destinations</TabsTrigger>
+              <TabsTrigger value="plan-trip" className="data-[state=active]:bg-warm-cream data-[state=active]:text-earth-brown">Plan Your Trip</TabsTrigger>
+              <TabsTrigger value="conservation" className="data-[state=active]:bg-sky-blue data-[state=active]:text-white">Contribute to Conservation</TabsTrigger>
             </TabsList>
             <TabsContent value="destinations">
               <DestinationGrid />

@@ -76,22 +76,21 @@ const DestinationDetail = () => {
               </CardContent>
             </Card>
 
-            {/* Bird Species */}
+            {/* Bird Species Count */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Camera className="w-5 h-5 text-forest-green" />
-                  Bird Species ({destination.birdSpecies.length}+)
+                  Bird Species ({destination.birdSpeciesCount} Total)
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {destination.birdSpecies.map((species, index) => (
-                    <div key={index} className="bg-accent rounded-lg p-3 text-sm font-medium">
-                      {species}
-                    </div>
-                  ))}
-                </div>
+                <p className="text-lg font-semibold text-forest-green">
+                  {destination.birdSpeciesCount} bird species have been recorded at this location
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  This destination offers excellent opportunities for birding enthusiasts to spot a diverse range of species.
+                </p>
               </CardContent>
             </Card>
 

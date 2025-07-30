@@ -18,7 +18,7 @@ const SocialLinks = () => {
             className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
           >
             <Twitter size={18} />
-            <span>Twitter</span>
+            <span>X</span>
           </a>
           <a 
             href="#" 

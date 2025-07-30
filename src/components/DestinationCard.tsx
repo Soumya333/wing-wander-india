@@ -47,7 +47,7 @@ const DestinationCard = ({ destination, onExplore }: DestinationCardProps) => {
           </div>
           <div className="flex items-center gap-2">
             <Camera className="w-4 h-4 text-forest-green" />
-            <span className="text-xs">{destination.birdSpecies.length} Species</span>
+            <span className="text-xs">{destination.birdSpeciesCount} Species</span>
           </div>
         </div>
         

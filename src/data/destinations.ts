@@ -6,7 +6,7 @@ export interface Destination {
   image: string;
   description: string;
   bestTime: string;
-  birdSpecies: string[];
+  birdSpeciesCount: number;
   guides: Guide[];
   howToReach: HowToReach;
   homestays: Homestay[];
@@ -47,7 +47,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/andaman-islands.jpg",
     description: "Pristine tropical islands with endemic bird species, coral reefs, and unique coastal ecosystems offering exceptional birding opportunities.",
     bestTime: "November to April (dry season)",
-    birdSpecies: Array.from({length: 410}, (_, i) => `Bird Species ${i + 1}`), // 410 species total
+    birdSpeciesCount: 410,
     guides: [
       {
         name: "Dr. Rauf Ali",
@@ -99,7 +99,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/corbett-tiger-reserve.jpg",
     description: "India's oldest national park, famous for tigers and diverse bird life in sal forests, grasslands, and riverine habitats.",
     bestTime: "November to June (park open season)",
-    birdSpecies: Array.from({length: 664}, (_, i) => `Bird Species ${i + 1}`), // 664 species total
+    birdSpeciesCount: 664,
     guides: [
       {
         name: "Vikram Singh Bisht",
@@ -151,7 +151,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/maguri-beel-assam.jpg",
     description: "A large wetland near Dibru-Saikhowa National Park, known for rare waterfowl and the critically endangered White-winged Duck.",
     bestTime: "November to March (winter season)",
-    birdSpecies: Array.from({length: 441}, (_, i) => `Bird Species ${i + 1}`), // 441 species total
+    birdSpeciesCount: 441,
     guides: [
       {
         name: "Prasanta Boro",
@@ -203,7 +203,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/chambal-river.jpg",
     description: "A pristine river system with dramatic ravines, home to gharials, gangetic dolphins, and diverse riverine bird species.",
     bestTime: "October to March (pleasant weather)",
-    birdSpecies: Array.from({length: 328}, (_, i) => `Bird Species ${i + 1}`), // 328 species total
+    birdSpeciesCount: 328,
     guides: [
       {
         name: "Faiyaz Khudsar",
@@ -255,7 +255,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/nainital-uttarakhand.jpg",
     description: "A picturesque hill station with lakes and oak forests, offering excellent birding opportunities in temperate Himalayan habitat.",
     bestTime: "March to June and September to November",
-    birdSpecies: Array.from({length: 714}, (_, i) => `Bird Species ${i + 1}`), // 714 species total
+    birdSpeciesCount: 714,
     guides: [
       {
         name: "Harish Rawat",
@@ -307,7 +307,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/nameri-national-park.jpg",
     description: "A pristine park on the foothills of Eastern Himalayas, known for the rare White-winged Duck and diverse forest birds.",
     bestTime: "November to April (dry season)",
-    birdSpecies: Array.from({length: 374}, (_, i) => `Bird Species ${i + 1}`), // 374 species total
+    birdSpeciesCount: 374,
     guides: [
       {
         name: "Anwaruddin Choudhury",
@@ -359,7 +359,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/singalila-ridge.jpg",
     description: "High-altitude ridge walk with rhododendron forests and alpine meadows, offering spectacular mountain views and unique birds.",
     bestTime: "March to May and October to December",
-    birdSpecies: Array.from({length: 405}, (_, i) => `Bird Species ${i + 1}`), // 405 species total
+    birdSpeciesCount: 405,
     guides: [
       {
         name: "Pemba Sherpa",
@@ -411,7 +411,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/sundarbans-mangroves.jpg",
     description: "The world's largest mangrove forest and tiger reserve, offering unique estuarine bird species and tidal creek birding.",
     bestTime: "September to March (post-monsoon to winter)",
-    birdSpecies: Array.from({length: 248}, (_, i) => `Bird Species ${i + 1}`), // 248 species total
+    birdSpeciesCount: 248,
     guides: [
       {
         name: "Subhendu Mazumdar",
@@ -463,7 +463,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/keoladeo-bharatpur.jpg",
     description: "A UNESCO World Heritage Site and one of the world's most important bird breeding and feeding grounds. Home to over 370 bird species.",
     bestTime: "October to March (winter migratory season)",
-    birdSpecies: Array.from({length: 457}, (_, i) => `Bird Species ${i + 1}`), // 457 species total
+    birdSpeciesCount: 457,
     guides: [
       {
         name: "Raj Kumar Sharma",
@@ -515,7 +515,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/munnar-kerala.jpg",
     description: "A hill station in Western Ghats known for its endemic bird species and misty tea plantations. Perfect for high-altitude bird photography.",
     bestTime: "September to May (post-monsoon and winter)",
-    birdSpecies: Array.from({length: 263}, (_, i) => `Bird Species ${i + 1}`), // 263 species total
+    birdSpeciesCount: 263,
     guides: [
       {
         name: "Thomas Mathew",
@@ -567,7 +567,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/ladakh-highlands.jpg",
     description: "High-altitude desert landscape offering unique Himalayan and Tibetan bird species in stark, dramatic terrain.",
     bestTime: "May to September (accessible season)",
-    birdSpecies: ["Black-necked Crane", "Tibetan Sandgrouse", "Brown-headed Gull", "Himalayan Snowcock", "Ladakh Urial", "Golden Eagle"],
+    birdSpeciesCount: 350,
     guides: [
       {
         name: "Tenzin Norbu",
@@ -619,7 +619,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/eaglenest-arunachal.jpg",
     description: "A biodiversity hotspot in the Eastern Himalayas, home to over 450 bird species including many rare and endemic species of the region.",
     bestTime: "October to April (post-monsoon and winter)",
-    birdSpecies: ["Bugun Liocichla", "Ward's Trogon", "Beautiful Nuthatch", "Fire-tailed Myzornis", "Rusty-bellied Shortwing", "Grey-bellied Tesia"],
+    birdSpeciesCount: 450,
     guides: [
       {
         name: "Ramana Athreya",
@@ -671,7 +671,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/north-sikkim.jpg",
     description: "High-altitude birding paradise with alpine meadows and rhododendron forests, offering spectacular views and unique Himalayan species.",
     bestTime: "April to June and September to November",
-    birdSpecies: ["Snow Partridge", "Himalayan Monal", "Blood Pheasant", "Satyr Tragopan", "Alpine Chough", "Grandala"],
+    birdSpeciesCount: 280,
     guides: [
       {
         name: "Phinjo Sherpa",
@@ -723,7 +723,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/neora-valley.jpg",
     description: "Dense virgin forest in the Eastern Himalayas, one of the richest biodiversity zones with over 265 bird species recorded.",
     bestTime: "October to March and May to June",
-    birdSpecies: ["Rufous-necked Hornbill", "Great Pied Hornbill", "Sultan Tit", "Long-tailed Broadbill", "Rusty-cheeked Scimitar Babbler", "Chestnut-crowned Warbler"],
+    birdSpeciesCount: 265,
     guides: [
       {
         name: "Sonam Lepcha",
@@ -775,7 +775,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/sattal-lakes.jpg",
     description: "A cluster of seven interconnected freshwater lakes nestled in oak and pine forests, famous for resident and migratory waterfowl.",
     bestTime: "November to March and May to June",
-    birdSpecies: ["Brown Fish Owl", "Crested Kingfisher", "Grey-headed Fish Eagle", "Wallcreeper", "Khalij Pheasant", "Himalayan Griffon"],
+    birdSpeciesCount: 240,
     guides: [
       {
         name: "Sanjay Sondhi",
@@ -827,7 +827,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/desert-national-park.jpg",
     description: "One of the largest national parks in India, showcasing the desert ecosystem with unique adaptations and the Great Indian Bustard.",
     bestTime: "November to February (winter season)",
-    birdSpecies: ["Great Indian Bustard", "MacQueen's Bustard", "Sandgrouse", "Cream-coloured Courser", "Desert Lark", "Brown Rock Chat"],
+    birdSpeciesCount: 180,
     guides: [
       {
         name: "Hanuman Singh",
@@ -879,7 +879,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/nalsarovar-gujarat.jpg",
     description: "The largest wetland bird sanctuary in Gujarat, a paradise for waterfowl and a major stopover for migratory birds.",
     bestTime: "November to February (peak migratory season)",
-    birdSpecies: ["Flamingo", "Pelican", "Brahminy Duck", "Purple Moorhen", "Painted Stork", "Rosy Pelican"],
+    birdSpeciesCount: 250,
     guides: [
       {
         name: "Devang Dholakia",
@@ -931,7 +931,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/bhigwan-maharashtra.jpg",
     description: "Known as the 'Bharatpur of Maharashtra', this backwater of Ujni Dam attracts thousands of migratory birds, especially flamingos.",
     bestTime: "November to March (migratory season)",
-    birdSpecies: ["Lesser Flamingo", "Greater Flamingo", "Brahminy Duck", "Northern Shoveler", "Common Pochard", "Painted Stork"],
+    birdSpeciesCount: 200,
     guides: [
       {
         name: "Prasad Ganpule",
@@ -983,7 +983,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/manas-assam.jpg",
     description: "A UNESCO World Heritage Site and biosphere reserve, home to diverse habitats from grasslands to forests with over 450 bird species.",
     bestTime: "November to April (winter and early summer)",
-    birdSpecies: ["Bengal Florican", "Great Hornbill", "Wreathed Hornbill", "Greater Adjutant", "Spot-billed Pelican", "Black-necked Stork"],
+    birdSpeciesCount: 450,
     guides: [
       {
         name: "Akash Gogoi",
@@ -1035,7 +1035,7 @@ export const destinations: Destination[] = [
     image: "/src/assets/kaziranga-assam.jpg",
     description: "World-famous for one-horned rhinoceros, this UNESCO site also hosts over 480 bird species in its grasslands and wetlands.",
     bestTime: "November to April (dry season)",
-    birdSpecies: ["Greater Adjutant", "Lesser Adjutant", "Black-necked Stork", "Swamp Francolin", "Jerdon's Babbler", "Bristled Grassbird"],
+    birdSpeciesCount: 480,
     guides: [
       {
         name: "Diganta Gogoi",
