@@ -1,0 +1,169 @@
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Camera, Award, X } from "lucide-react";
+import bbcLogo from "@/assets/partner-bbc.jpg";
+import natgeoLogo from "@/assets/partner-natgeo.jpg";
+import discoveryLogo from "@/assets/partner-discovery.jpg";
+import ntcaLogo from "@/assets/partner-ntca.jpg";
+import sudhirPhoto from "@/assets/photographer-sudhir.jpg";
+import nallaPhoto from "@/assets/photographer-nalla.jpg";
+import mohanPhoto from "@/assets/photographer-mohan.jpg";
+import kalyanPhoto from "@/assets/photographer-kalyan.jpg";
+import sandeshPhoto from "@/assets/photographer-sandesh.jpg";
+import shivangPhoto from "@/assets/photographer-shivang.jpg";
+
+const TopHighlightTabs = () => {
+  const [isPhotographerOpen, setIsPhotographerOpen] = useState(false);
+  const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
+
+  const photographerTestimonials = [
+    {
+      name: "Sudhir Shivaram",
+      photo: sudhirPhoto,
+      introduction: "Award-winning wildlife photographer and educator known for tiger photography workshops",
+      testimonial: "Exceptional field expertise and local knowledge made our tiger photography expedition truly memorable. The guides' understanding of animal behavior helped us capture incredible shots."
+    },
+    {
+      name: "Nalla Muthu",
+      photo: nallaPhoto,
+      introduction: "Renowned wildlife filmmaker, National Award winner for 'Machli' documentary",
+      testimonial: "Professional service and deep conservation ethics. Their commitment to responsible wildlife tourism sets them apart in the industry."
+    },
+    {
+      name: "Mohan Thomas",
+      photo: mohanPhoto,
+      introduction: "Wildlife photographer and conservationist with over 200 tiger photographs",
+      testimonial: "Outstanding local connections and habitat knowledge. Every trip with them has been productive and ethically conducted."
+    },
+    {
+      name: "Kalyan Varma",
+      photo: kalyanPhoto,
+      introduction: "National Geographic photographer and filmmaker, co-founder of India Nature Watch",
+      testimonial: "Their expertise in wildlife behavior and conservation approach makes them ideal partners for serious wildlife photography."
+    },
+    {
+      name: "Sandesh Kadur",
+      photo: sandeshPhoto,
+      introduction: "Conservation photographer and National Geographic Explorer",
+      testimonial: "Unmatched field experience and dedication to wildlife conservation. Their eco-friendly approach aligns perfectly with conservation goals."
+    },
+    {
+      name: "Shivang Mehta",
+      photo: shivangPhoto,
+      introduction: "International award-winning wildlife photographer and author specializing in Indian wildlife",
+      testimonial: "Outstanding guides with deep knowledge of wildlife behavior and habitats. Their ethical approach to wildlife photography makes every expedition meaningful and productive."
+    }
+  ];
+
+  const partnerships = [
+    {
+      name: "BBC Wildlife",
+      logo: bbcLogo,
+      description: "Collaborated on multiple wildlife documentaries showcasing India's endangered species. Our expertise helped capture rare footage of tigers and leopards in their natural habitat, contributing to global wildlife awareness."
+    },
+    {
+      name: "National Geographic",
+      logo: natgeoLogo,
+      description: "Provided field support and local expertise for conservation photography projects. Assisted in documenting the recovery of tiger populations in central India and bird migration patterns across the subcontinent."
+    },
+    {
+      name: "Discovery Channel",
+      logo: discoveryLogo,
+      description: "Facilitated wildlife filming expeditions for nature documentaries. Our guides helped crews safely document predator behavior and contributed to educational content about Indian wildlife conservation efforts."
+    },
+    {
+      name: "NTCA",
+      logo: ntcaLogo,
+      description: "Working partnership with National Tiger Conservation Authority on habitat monitoring and community-based conservation initiatives. Contributing to tiger census data and supporting anti-poaching efforts across protected reserves."
+    }
+  ];
+
+  return (
+    <div className="fixed top-6 right-6 z-50 flex gap-3">
+      {/* Photographer Testimonials Tab */}
+      <Dialog open={isPhotographerOpen} onOpenChange={setIsPhotographerOpen}>
+        <DialogTrigger asChild>
+          <Button
+            className="relative bg-gradient-to-r from-forest-green to-forest-green/80 hover:from-forest-green/90 hover:to-forest-green/70 text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none group"
+            size="sm"
+          >
+            <Camera className="w-4 h-4 mr-2" />
+            Photographer Testimonials
+            <Badge className="absolute -top-2 -right-2 bg-warm-cream text-earth-brown animate-pulse text-xs px-1">
+              NEW
+            </Badge>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center mb-4">
+              Photographer Testimonials
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {photographerTestimonials.map((photographer, index) => (
+              <div key={index} className="bg-card rounded-lg p-6 border shadow-sm hover:shadow-md transition-shadow animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex flex-col items-center text-center mb-4">
+                  <img 
+                    src={photographer.photo} 
+                    alt={photographer.name}
+                    className="w-20 h-20 object-cover rounded-full mb-3 hover-scale"
+                  />
+                  <h3 className="text-lg font-semibold">{photographer.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{photographer.introduction}</p>
+                </div>
+                <blockquote className="text-muted-foreground italic leading-relaxed">
+                  "{photographer.testimonial}"
+                </blockquote>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Conservation Partnerships Tab */}
+      <Dialog open={isPartnershipOpen} onOpenChange={setIsPartnershipOpen}>
+        <DialogTrigger asChild>
+          <Button
+            className="relative bg-gradient-to-r from-sky-blue to-sky-blue/80 hover:from-sky-blue/90 hover:to-sky-blue/70 text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none group"
+            size="sm"
+          >
+            <Award className="w-4 h-4 mr-2" />
+            Conservation Partnerships
+            <Badge className="absolute -top-2 -right-2 bg-warm-cream text-earth-brown animate-pulse text-xs px-1">
+              NEW
+            </Badge>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center mb-4">
+              Conservation Partnerships
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {partnerships.map((partner, index) => (
+              <div key={index} className="bg-card rounded-lg p-6 border shadow-sm hover:shadow-md transition-shadow animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex items-center space-x-4 mb-4">
+                  <img 
+                    src={partner.logo} 
+                    alt={`${partner.name} logo`}
+                    className="w-16 h-16 object-contain rounded hover-scale"
+                  />
+                  <h3 className="text-xl font-semibold">{partner.name}</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {partner.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default TopHighlightTabs;
