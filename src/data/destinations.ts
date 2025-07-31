@@ -1078,5 +1078,57 @@ export const destinations: Destination[] = [
       }
     ],
     highlights: ["UNESCO World Heritage Site", "480+ bird species", "Grassland ecosystem", "Rhino and bird combo"]
+  },
+  {
+    id: "manglajodi",
+    name: "Manglajodi Wetlands",
+    location: "Chilika Lake, Khordha, Odisha",
+    state: "Odisha",
+    image: "/src/assets/manglajodi-wetlands.jpg",
+    description: "A community-managed wetland at Chilika Lake hosting over 150,000 migratory birds. Paradise for waterfowl enthusiasts and photographers.",
+    bestTime: "November to February (winter migratory season)",
+    birdSpeciesCount: 278,
+    guides: [
+      {
+        name: "Subhash Behera",
+        experience: "20+ years",
+        contact: "+91 9876543290",
+        specialization: "Waterfowl and migratory species",
+        price: "₹2,200/day"
+      },
+      {
+        name: "Jagannath Patra",
+        experience: "15+ years",
+        contact: "+91 9876543291",
+        specialization: "Boat birding and photography",
+        price: "₹1,800/day"
+      }
+    ],
+    howToReach: {
+      nearestAirport: "Biju Patnaik International Airport, Bhubaneswar (50 km)",
+      nearestRailway: "Chilika Railway Station (15 km)",
+      roadAccess: "Well-connected from Bhubaneswar and Puri",
+      localTransport: "Boats essential for wetland birding",
+      googleMapsLink: "https://www.google.com/maps/dir//Manglajodi,+Khordha,+Odisha/@19.9167,85.4167,12z"
+    },
+    homestays: [
+      {
+        name: "Chilika Lagoon Resort",
+        type: "Lakeside resort",
+        price: "₹4,200/night",
+        contact: "+91 9876543292",
+        amenities: ["Lake views", "Boat safaris", "Photography hides", "Seafood specialties"],
+        distance: "2 km from wetland"
+      },
+      {
+        name: "Fisherman's Village Stay",
+        type: "Community homestay",
+        price: "₹2,500/night",
+        contact: "+91 9876543293",
+        amenities: ["Authentic village experience", "Local fishing", "Traditional meals", "Bird guide service"],
+        distance: "1 km from birding site"
+      }
+    ],
+    highlights: ["150,000+ migratory birds", "Community conservation model", "Chilika Lake ecosystem", "Winter waterfowl spectacle"]
   }
 ];

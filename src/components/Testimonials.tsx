@@ -7,6 +7,7 @@ import nallaPhoto from "@/assets/photographer-nalla.jpg";
 import mohanPhoto from "@/assets/photographer-mohan.jpg";
 import kalyanPhoto from "@/assets/photographer-kalyan.jpg";
 import sandeshPhoto from "@/assets/photographer-sandesh.jpg";
+import shivangPhoto from "@/assets/photographer-shivang.jpg";
 
 const Testimonials = () => {
   const partnerships = [
@@ -62,6 +63,12 @@ const Testimonials = () => {
       photo: sandeshPhoto,
       introduction: "Conservation photographer and National Geographic Explorer",
       testimonial: "Unmatched field experience and dedication to wildlife conservation. Their eco-friendly approach aligns perfectly with conservation goals."
+    },
+    {
+      name: "Shivang Mehta",
+      photo: shivangPhoto,
+      introduction: "International award-winning wildlife photographer and author specializing in Indian wildlife",
+      testimonial: "Outstanding guides with deep knowledge of wildlife behavior and habitats. Their ethical approach to wildlife photography makes every expedition meaningful and productive."
     }
   ];
 
