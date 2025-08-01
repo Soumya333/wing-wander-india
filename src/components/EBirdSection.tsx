@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Camera, MapPin, Users } from "lucide-react";
+import { BirdSightingForm } from "./BirdSightingForm";
 
 const EBirdSection = () => {
   const eBirdFeatures = [
@@ -58,6 +59,7 @@ const EBirdSection = () => {
               Join millions of birders worldwide who use eBird to track their observations and contribute to bird conservation efforts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <BirdSightingForm />
               <Button 
                 size="lg" 
                 className="bg-forest-green hover:bg-forest-green/90"

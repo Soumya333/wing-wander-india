@@ -30,6 +30,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { AuthModal } from "@/components/auth/AuthModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -51,6 +54,10 @@ type FormData = z.infer<typeof formSchema>;
 
 const PlanTripForm = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,13 +71,47 @@ const PlanTripForm = () => {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    toast({
-      title: "Trip Request Submitted!",
-      description: "We'll get back to you within 24 hours with a detailed itinerary.",
-    });
-    form.reset();
+  const onSubmit = async (data: FormData) => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('trip_requests')
+        .insert([
+          {
+            user_id: user.id,
+            name: data.name,
+            email: data.email,
+            country: data.country,
+            phone: data.phone,
+            start_date: data.startDate.toISOString().split('T')[0],
+            end_date: data.endDate.toISOString().split('T')[0],
+            duration: data.duration,
+            adults: parseInt(data.adults),
+            children: parseInt(data.children),
+          },
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Trip Request Submitted!",
+        description: "We'll get back to you within 24 hours with a detailed itinerary.",
+      });
+      form.reset();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to submit trip request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -322,12 +363,19 @@ const PlanTripForm = () => {
               variant="nature" 
               size="lg" 
               className="text-lg px-12 py-3"
+              disabled={isSubmitting}
             >
-              Request Quote
+              {isSubmitting ? "Submitting..." : "Request Quote"}
             </Button>
           </div>
         </form>
       </Form>
+
+      <AuthModal
+        open={authModalOpen}
+        onOpenChange={setAuthModalOpen}
+        defaultMode="signup"
+      />
     </div>
   );
 };

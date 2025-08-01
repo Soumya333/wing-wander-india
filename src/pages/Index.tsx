@@ -7,11 +7,16 @@ import Testimonials from "@/components/Testimonials";
 import ConservationContribute from "@/components/ConservationContribute";
 import EBirdSection from "@/components/EBirdSection";
 import TopHighlightTabs from "@/components/TopHighlightTabs";
+import { UserMenu } from "@/components/auth/UserMenu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   return (
     <div className="min-h-screen relative">
+      {/* User Menu */}
+      <div className="fixed top-6 right-6 z-50">
+        <UserMenu />
+      </div>
       <SocialLinks />
       <Hero />
       <div className="py-20 px-6 bg-background">
