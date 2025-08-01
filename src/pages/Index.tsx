@@ -12,11 +12,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const Index = () => {
   return (
     <div className="min-h-screen relative">
-      <TopHighlightTabs />
       <SocialLinks />
       <Hero />
       <div className="py-20 px-6 bg-background">
         <div className="max-w-6xl mx-auto">
+          <TopHighlightTabs />
           <Tabs defaultValue="destinations" className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8 bg-gradient-to-r from-forest-green/10 via-warm-cream/10 via-sky-blue/10 to-earth-brown/10 p-1 rounded-xl border border-forest-green/20">
               <TabsTrigger 

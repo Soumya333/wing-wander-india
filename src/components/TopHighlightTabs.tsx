@@ -81,19 +81,16 @@ const TopHighlightTabs = () => {
   ];
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex gap-3">
+    <div className="w-full flex justify-center gap-4 mb-8">
       {/* Photographer Testimonials Tab */}
       <Dialog open={isPhotographerOpen} onOpenChange={setIsPhotographerOpen}>
         <DialogTrigger asChild>
           <Button
-            className="relative bg-gradient-to-r from-forest-green to-forest-green/80 hover:from-forest-green/90 hover:to-forest-green/70 text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none group"
-            size="sm"
+            className="relative bg-gradient-to-r from-forest-green to-forest-green/80 hover:from-forest-green/90 hover:to-forest-green/70 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            size="lg"
           >
             <Camera className="w-4 h-4 mr-2" />
             Photographer Testimonials
-            <Badge className="absolute -top-2 -right-2 bg-warm-cream text-earth-brown animate-pulse text-xs px-1">
-              NEW
-            </Badge>
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
@@ -127,14 +124,11 @@ const TopHighlightTabs = () => {
       <Dialog open={isPartnershipOpen} onOpenChange={setIsPartnershipOpen}>
         <DialogTrigger asChild>
           <Button
-            className="relative bg-gradient-to-r from-sky-blue to-sky-blue/80 hover:from-sky-blue/90 hover:to-sky-blue/70 text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none group"
-            size="sm"
+            className="relative bg-gradient-to-r from-sky-blue to-sky-blue/80 hover:from-sky-blue/90 hover:to-sky-blue/70 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            size="lg"
           >
             <Award className="w-4 h-4 mr-2" />
             Conservation Partnerships
-            <Badge className="absolute -top-2 -right-2 bg-warm-cream text-earth-brown animate-pulse text-xs px-1">
-              NEW
-            </Badge>
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">

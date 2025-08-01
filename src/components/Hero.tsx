@@ -1,17 +1,48 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Camera, MapPin, Binoculars } from "lucide-react";
-import heroImage from "../assets/hero-peacock.jpg";
+import heroPeacock from "../assets/hero-peacock.jpg";
+import heroBustard from "../assets/hero-bustard.jpg";
+import heroFlorican from "../assets/hero-florican.jpg";
+import heroOwlet from "../assets/hero-owlet.jpg";
+import heroHeron from "../assets/hero-heron.jpg";
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const heroImages = [
+    { src: heroPeacock, alt: "Indian Peacock" },
+    { src: heroBustard, alt: "Great Indian Bustard" },
+    { src: heroFlorican, alt: "Bengal Florican" },
+    { src: heroOwlet, alt: "Forest Owlet" },
+    { src: heroHeron, alt: "White-bellied Heron" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % heroImages.length
+      );
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-earth-brown/80 via-earth-brown/60 to-transparent"></div>
-      </div>
+      {/* Background Images with fade transition */}
+      {heroImages.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ backgroundImage: `url(${image.src})` }}
+        />
+      ))}
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-earth-brown/80 via-earth-brown/60 to-transparent"></div>
       
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
