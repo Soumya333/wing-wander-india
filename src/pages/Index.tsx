@@ -7,11 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import ConservationContribute from "@/components/ConservationContribute";
 import EBirdSection from "@/components/EBirdSection";
 import TopHighlightTabs from "@/components/TopHighlightTabs";
-import ProfileManagement from "@/components/ProfileManagement";
-import ContactUs from "@/components/ContactUs";
+import QuickAccessButtons from "@/components/QuickAccessButtons";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Phone } from "lucide-react";
 
 const Index = () => {
   return (
@@ -26,31 +24,8 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <TopHighlightTabs />
           
-          {/* Profile and Contact Section */}
-          <div className="mb-12">
-            <Tabs defaultValue="profile" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-accent/50 backdrop-blur-sm max-w-md mx-auto mb-8">
-                <TabsTrigger value="profile" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                  <User className="w-4 h-4 mr-2" />
-                  Profile
-                </TabsTrigger>
-                <TabsTrigger value="contact" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Contact Us
-                </TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="profile">
-                <div className="max-w-2xl mx-auto">
-                  <ProfileManagement />
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="contact">
-                <ContactUs />
-              </TabsContent>
-            </Tabs>
-          </div>
+          {/* Quick Access Buttons */}
+          <QuickAccessButtons />
 
           {/* Main Features Section */}
           <Tabs defaultValue="destinations" className="w-full">
