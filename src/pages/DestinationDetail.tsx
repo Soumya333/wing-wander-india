@@ -168,7 +168,7 @@ const DestinationDetail = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-forest-green" />
-                  Expert Guides
+                  Expert Guides Available
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -178,13 +178,15 @@ const DestinationDetail = () => {
                     <div className="text-sm text-muted-foreground mb-2">{guide.experience} • {guide.specialization}</div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-forest-green">{guide.price}</span>
-                      <Button size="sm" variant="outline">
-                        <Phone className="w-4 h-4 mr-1" />
-                        Contact
-                      </Button>
+                      <div className="text-xs text-muted-foreground">
+                        Available for booking
+                      </div>
                     </div>
                   </div>
                 ))}
+                <div className="text-sm text-muted-foreground text-center pt-2 border-t">
+                  Contact us to book your preferred guide and get detailed itinerary
+                </div>
               </CardContent>
             </Card>
 

@@ -52,16 +52,30 @@ export const destinations: Destination[] = [
       {
         name: "Dr. Rauf Ali",
         experience: "20+ years",
-        contact: "+91 9876543250",
+        contact: "Available through booking",
         specialization: "Endemic island species and marine birding",
         price: "₹3,500/day"
       },
       {
         name: "John Prakash",
         experience: "15+ years",
-        contact: "+91 9876543251",
+        contact: "Available through booking",
         specialization: "Coastal and forest birds",
         price: "₹2,800/day"
+      },
+      {
+        name: "Maria D'Cruz",
+        experience: "12+ years",
+        contact: "Available through booking",
+        specialization: "Underwater birding and sea eagles",
+        price: "₹2,500/day"
+      },
+      {
+        name: "Anthony Island",
+        experience: "18+ years",
+        contact: "Available through booking",
+        specialization: "Endemic subspecies and night birding",
+        price: "₹3,000/day"
       }
     ],
     howToReach: {
@@ -104,16 +118,30 @@ export const destinations: Destination[] = [
       {
         name: "Vikram Singh Bisht",
         experience: "25+ years",
-        contact: "+91 9876543254",
+        contact: "Available through booking",
         specialization: "Tigers and forest birds",
         price: "₹3,200/day"
       },
       {
         name: "Rajesh Kumar",
         experience: "18+ years",
-        contact: "+91 9876543255",
+        contact: "Available through booking",
         specialization: "Riverine birds and photography",
         price: "₹2,800/day"
+      },
+      {
+        name: "Priya Negi",
+        experience: "14+ years",
+        contact: "Available through booking",
+        specialization: "Tiger behavior and jungle sounds",
+        price: "₹2,600/day"
+      },
+      {
+        name: "Amit Rawat",
+        experience: "20+ years",
+        contact: "Available through booking",
+        specialization: "Forest ecology and bird calls",
+        price: "₹3,000/day"
       }
     ],
     howToReach: {
@@ -156,16 +184,30 @@ export const destinations: Destination[] = [
       {
         name: "Prasanta Boro",
         experience: "22+ years",
-        contact: "+91 9876543258",
+        contact: "Available through booking",
         specialization: "White-winged Duck and wetland species",
         price: "₹2,500/day"
       },
       {
         name: "Mrinal Kalita",
         experience: "16+ years",
-        contact: "+91 9876543259",
+        contact: "Available through booking",
         specialization: "Boat birding and waterfowl",
         price: "₹2,200/day"
+      },
+      {
+        name: "Ranjan Gogoi",
+        experience: "19+ years",
+        contact: "Available through booking",
+        specialization: "Endemic Assam species and river birding",
+        price: "₹2,300/day"
+      },
+      {
+        name: "Mintu Borah",
+        experience: "13+ years",
+        contact: "Available through booking",
+        specialization: "Early morning wetland tours",
+        price: "₹2,000/day"
       }
     ],
     howToReach: {
