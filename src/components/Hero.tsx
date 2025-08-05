@@ -59,16 +59,6 @@ const Hero = () => {
           perfect timing, and comfortable stays for unforgettable wildlife photography adventures.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="nature" size="lg" className="text-lg px-8 py-3">
-            <Camera className="mr-2" />
-            Explore Destinations
-          </Button>
-          <Button variant="sunset" size="lg" className="text-lg px-8 py-3">
-            <MapPin className="mr-2" />
-            Plan Your Trip
-          </Button>
-        </div>
         
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
