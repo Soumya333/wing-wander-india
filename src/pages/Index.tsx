@@ -7,8 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import ConservationContribute from "@/components/ConservationContribute";
 import EBirdSection from "@/components/EBirdSection";
 import TopHighlightTabs from "@/components/TopHighlightTabs";
-import QuickAccessButtons from "@/components/QuickAccessButtons";
+
 import { UserMenu } from "@/components/auth/UserMenu";
+import Chatbot from "@/components/Chatbot";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
@@ -69,6 +70,7 @@ const Index = () => {
       </div>
       <Testimonials />
       <Footer />
+      <Chatbot />
     </div>
   );
 };
