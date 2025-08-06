@@ -123,35 +123,44 @@ const Chatbot = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-xl z-40"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl z-40 bg-gradient-to-r from-forest-green to-forest-green/90 hover:from-forest-green/90 hover:to-forest-green border-2 border-white/20 backdrop-blur-sm animate-pulse hover:animate-none transition-all duration-300"
           size="icon"
         >
-          <MessageCircle className="h-6 w-6" />
+          <div className="flex flex-col items-center">
+            <Bot className="h-7 w-7 text-white mb-0.5" />
+            <span className="text-[10px] text-white font-medium">AI Assistant</span>
+          </div>
         </Button>
       )}
 
       {/* Chatbot Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[500px] shadow-xl z-50 flex flex-col">
-          <CardHeader className="pb-2">
+        <Card className="fixed bottom-6 right-6 w-96 h-[500px] shadow-2xl z-50 flex flex-col border-2 border-forest-green/20 backdrop-blur-sm bg-white/95 dark:bg-gray-900/95">
+          <CardHeader className="pb-3 bg-gradient-to-r from-forest-green to-forest-green/90 text-white rounded-t-lg">
             <CardTitle className="flex items-center justify-between text-lg">
               <div className="flex items-center">
-                <Bot className="mr-2 h-5 w-5 text-primary" />
-                Birding Assistant
+                <div className="relative">
+                  <Bot className="mr-3 h-6 w-6 text-white" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                  <div className="font-semibold">AI Birding Assistant</div>
+                  <div className="text-xs text-white/80 font-normal">Always here to help!</div>
+                </div>
               </div>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="h-8 w-8"
+                className="h-8 w-8 text-white hover:bg-white/20 hover:text-white"
               >
                 <X className="h-4 w-4" />
               </Button>
             </CardTitle>
           </CardHeader>
           
-          <CardContent className="flex-1 flex flex-col p-4 pt-0">
-            <ScrollArea className="flex-1 pr-4" ref={scrollAreaRef}>
+          <CardContent className="flex-1 flex flex-col p-4 pt-4">
+            <ScrollArea className="flex-1 pr-2 max-h-[350px] overflow-y-auto scrollbar-thin scrollbar-thumb-forest-green/30 scrollbar-track-gray-100" ref={scrollAreaRef}>
               <div className="space-y-4">
                 {messages.map((message) => (
                   <div

@@ -33,10 +33,12 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { supabase } from "@/integrations/supabase/client";
+import { destinations } from "@/data/destinations";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
+  destination: z.string().min(1, "Please select a destination"),
   country: z.string().min(1, "Please select a country"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
   startDate: z.date({
@@ -63,6 +65,7 @@ const PlanTripForm = () => {
     defaultValues: {
       name: "",
       email: "",
+      destination: "",
       country: "",
       phone: "",
       duration: "",
@@ -86,6 +89,7 @@ const PlanTripForm = () => {
             user_id: user.id,
             name: data.name,
             email: data.email,
+            destination: data.destination,
             country: data.country,
             phone: data.phone,
             start_date: data.startDate.toISOString().split('T')[0],
@@ -151,6 +155,31 @@ const PlanTripForm = () => {
                   <FormControl>
                     <Input placeholder="Enter your email" type="email" {...field} />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="destination"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Preferred Destination</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select destination" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="max-h-60">
+                      {destinations.map((destination) => (
+                        <SelectItem key={destination.id} value={destination.name}>
+                          {destination.name}, {destination.state}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

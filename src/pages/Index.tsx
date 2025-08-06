@@ -66,9 +66,32 @@ const Index = () => {
               <EBirdSection />
             </TabsContent>
           </Tabs>
+          
+          {/* Photographer Testimonials Section - Only shown when tab is active */}
+          <Tabs defaultValue="hidden" className="w-full mt-12">
+            <TabsList className="grid w-full grid-cols-2 mb-8 bg-gradient-to-r from-warm-cream/10 to-earth-brown/10 p-1 rounded-xl border border-warm-cream/20">
+              <TabsTrigger 
+                value="testimonials" 
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-warm-cream data-[state=active]:to-warm-cream/90 data-[state=active]:text-earth-brown data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-medium"
+              >
+                Photographer Testimonials
+              </TabsTrigger>
+              <TabsTrigger 
+                value="conservation-partnerships" 
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-earth-brown data-[state=active]:to-earth-brown/90 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-medium"
+              >
+                Conservation Partnerships
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="testimonials">
+              <Testimonials />
+            </TabsContent>
+            <TabsContent value="conservation-partnerships">
+              <ConservationContribute />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
-      <Testimonials />
       <Footer />
       <Chatbot />
     </div>
