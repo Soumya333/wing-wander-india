@@ -6,6 +6,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { MessageCircle, Send, X, Bot, User } from 'lucide-react';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { destinations } from '@/data/destinations';
+import { sanitizeUserInput, chatRateLimiter } from '@/utils/inputSanitization';
+import { logSuspiciousInput, logRateLimitExceeded, securityMonitor } from '@/utils/securityMonitoring';
 
 interface Message {
   id: string;
@@ -139,9 +141,30 @@ const Chatbot = () => {
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
 
+    // Security: Rate limiting check
+    const userId = user?.id || 'anonymous';
+    if (!chatRateLimiter.isAllowed(userId)) {
+      logRateLimitExceeded(user?.id, 'chatbot_message');
+      alert('Please slow down. You are sending messages too quickly.');
+      return;
+    }
+
+    // Security: Input sanitization
+    const sanitizedInput = sanitizeUserInput(inputValue);
+    
+    // Security: Check for suspicious patterns
+    if (sanitizedInput.length < inputValue.length * 0.5) {
+      logSuspiciousInput(inputValue, 'Excessive markup or suspicious content removed', user?.id);
+    }
+
+    // Security: Detect suspicious activity
+    if (securityMonitor.detectSuspiciousActivity(user?.id)) {
+      console.warn('Suspicious activity detected for user');
+    }
+
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputValue,
+      text: sanitizedInput,
       sender: 'user',
       timestamp: new Date()
     };
@@ -154,7 +177,7 @@ const Chatbot = () => {
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: generateResponse(inputValue),
+        text: generateResponse(sanitizedInput),
         sender: 'bot',
         timestamp: new Date()
       };

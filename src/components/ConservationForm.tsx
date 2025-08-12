@@ -15,9 +15,16 @@ import { AuthModal } from "@/components/auth/AuthModal";
 import { supabase } from "@/integrations/supabase/client";
 
 const contributionSchema = z.object({
-  amount: z.number().min(1, "Amount must be at least ₹1").max(1000000, "Amount exceeds maximum limit"),
-  quantity: z.number().min(1, "Quantity must be at least 1").max(1000, "Quantity too large").optional(),
-  message: z.string().max(500, "Message too long").optional(),
+  amount: z.number()
+    .min(1, "Amount must be at least ₹1")
+    .max(1000000, "Amount exceeds maximum limit"),
+  quantity: z.number()
+    .min(1, "Quantity must be at least 1")
+    .max(1000, "Quantity too large")
+    .optional(),
+  message: z.string()
+    .max(2000, "Message too long")
+    .optional(),
 });
 
 type ContributionData = z.infer<typeof contributionSchema>;
@@ -87,21 +94,36 @@ const ContributionModal = ({ option }: ContributionModalProps) => {
       return;
     }
 
+    // Security: Rate limiting check
+    if (!formRateLimiter.isAllowed(user.id)) {
+      logRateLimitExceeded(user.id, 'conservation_form');
+      toast({
+        title: "Please slow down",
+        description: "You are submitting forms too quickly. Please wait a moment.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
+      // Sanitize text inputs
+      const sanitizedData = {
+        user_id: user.id,
+        contribution_type: option.id,
+        amount: data.amount,
+        quantity: data.quantity || 1,
+        message: data.message ? sanitizeUserInput(data.message) : undefined,
+      };
+
       const { error } = await supabase
         .from('conservation_contributions')
-        .insert([
-          {
-            user_id: user.id,
-            contribution_type: option.id,
-            amount: data.amount,
-            quantity: data.quantity || 1,
-            message: data.message,
-          },
-        ]);
+        .insert([sanitizedData]);
 
-      if (error) throw error;
+      if (error) {
+        logFormError('conservation_contribution', error.message, user.id);
+        throw error;
+      }
 
       toast({
         title: "Contribution Submitted!",
@@ -111,9 +133,12 @@ const ContributionModal = ({ option }: ContributionModalProps) => {
       setModalOpen(false);
       form.reset();
     } catch (error: any) {
+      const errorMessage = error?.message || 'Unknown error';
+      logFormError('conservation_contribution', errorMessage, user.id);
+      
       toast({
         title: "Error",
-        description: error.message || "Failed to submit contribution. Please try again.",
+        description: errorMessage || "Failed to submit contribution. Please try again.",
         variant: "destructive",
       });
     } finally {

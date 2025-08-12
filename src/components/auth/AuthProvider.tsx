@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
+import { logAuthFailure } from '@/utils/securityMonitoring';
 
 // Authentication cleanup utility to prevent limbo states
 export const cleanupAuthState = () => {
@@ -106,6 +107,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email,
       password,
     });
+
+    // Security: Log authentication failures
+    if (error) {
+      logAuthFailure(undefined, `Sign in failed: ${error.message}`);
+    }
+
     return { data, error };
   };
 

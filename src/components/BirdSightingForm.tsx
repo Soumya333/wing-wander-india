@@ -24,10 +24,21 @@ import { AuthModal } from "@/components/auth/AuthModal";
 import { supabase } from "@/integrations/supabase/client";
 
 const sightingSchema = z.object({
-  speciesName: z.string().min(2, "Species name is required").max(100, "Species name too long"),
-  commonName: z.string().max(100, "Common name too long").optional(),
-  scientificName: z.string().max(100, "Scientific name too long").optional(),
-  locationName: z.string().min(2, "Location name is required").max(200, "Location name too long"),
+  speciesName: z.string()
+    .min(2, "Species name is required")
+    .max(100, "Species name too long")
+    .regex(/^[a-zA-Z\s\-'().]+$/, "Species name contains invalid characters"),
+  commonName: z.string()
+    .max(100, "Common name too long")
+    .regex(/^[a-zA-Z\s\-'().]*$/, "Common name contains invalid characters")
+    .optional(),
+  scientificName: z.string()
+    .max(100, "Scientific name too long")
+    .regex(/^[a-zA-Z\s\-.]*$/, "Scientific name contains invalid characters")
+    .optional(),
+  locationName: z.string()
+    .min(2, "Location name is required")
+    .max(200, "Location name too long"),
   latitude: z.number().min(-90).max(90).optional(),
   longitude: z.number().min(-180).max(180).optional(),
   observationDate: z.date({
@@ -37,7 +48,11 @@ const sightingSchema = z.object({
   count: z.number().min(1, "Count must be at least 1").max(10000, "Count seems unrealistic"),
   breedingBehavior: z.boolean(),
   notes: z.string().max(1000, "Notes too long").optional(),
-  photoUrl: z.string().url("Invalid URL format").optional().or(z.literal("")),
+  photoUrl: z.string()
+    .optional()
+    .refine((url) => !url || url === "" || validatePhotoUrl(url), {
+      message: "Please provide a valid HTTPS image URL from a trusted photo service"
+    }),
 });
 
 type SightingData = z.infer<typeof sightingSchema>;
@@ -69,29 +84,56 @@ export const BirdSightingForm = () => {
       return;
     }
 
+    // Security: Rate limiting check
+    if (!formRateLimiter.isAllowed(user.id)) {
+      logRateLimitExceeded(user.id, 'bird_sighting_form');
+      toast({
+        title: "Please slow down",
+        description: "You are submitting forms too quickly. Please wait a moment.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Security: Additional validation for photo URL
+    if (data.photoUrl && data.photoUrl !== "" && !validatePhotoUrl(data.photoUrl)) {
+      logInvalidUrl(data.photoUrl, user.id);
+      logFormError('bird_sighting', 'Invalid photo URL submitted', user.id);
+      toast({
+        title: "Invalid Photo URL",
+        description: "Please provide a valid HTTPS image URL from a trusted photo service.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
+      // Sanitize text inputs
+      const sanitizedData = {
+        user_id: user.id,
+        species_name: sanitizeUserInput(data.speciesName),
+        common_name: data.commonName ? sanitizeUserInput(data.commonName) : undefined,
+        scientific_name: data.scientificName ? sanitizeUserInput(data.scientificName) : undefined,
+        location_name: sanitizeUserInput(data.locationName),
+        latitude: data.latitude,
+        longitude: data.longitude,
+        observation_date: data.observationDate.toISOString().split('T')[0],
+        observation_time: data.observationTime,
+        count: data.count,
+        breeding_behavior: data.breedingBehavior,
+        notes: data.notes ? sanitizeUserInput(data.notes) : undefined,
+        photo_url: data.photoUrl || undefined,
+      };
+
       const { error } = await supabase
         .from('bird_sightings')
-        .insert([
-          {
-            user_id: user.id,
-            species_name: data.speciesName,
-            common_name: data.commonName,
-            scientific_name: data.scientificName,
-            location_name: data.locationName,
-            latitude: data.latitude,
-            longitude: data.longitude,
-            observation_date: data.observationDate.toISOString().split('T')[0],
-            observation_time: data.observationTime,
-            count: data.count,
-            breeding_behavior: data.breedingBehavior,
-            notes: data.notes,
-            photo_url: data.photoUrl,
-          },
-        ]);
+        .insert([sanitizedData]);
 
-      if (error) throw error;
+      if (error) {
+        logFormError('bird_sighting', error.message, user.id);
+        throw error;
+      }
 
       toast({
         title: "Sighting Recorded!",
@@ -101,9 +143,12 @@ export const BirdSightingForm = () => {
       setModalOpen(false);
       form.reset();
     } catch (error: any) {
+      const errorMessage = error?.message || 'Unknown error';
+      logFormError('bird_sighting', errorMessage, user.id);
+      
       toast({
         title: "Error",
-        description: error.message || "Failed to record sighting. Please try again.",
+        description: errorMessage || "Failed to record sighting. Please try again.",
         variant: "destructive",
       });
     } finally {
