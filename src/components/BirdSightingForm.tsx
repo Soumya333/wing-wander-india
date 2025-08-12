@@ -24,20 +24,20 @@ import { AuthModal } from "@/components/auth/AuthModal";
 import { supabase } from "@/integrations/supabase/client";
 
 const sightingSchema = z.object({
-  speciesName: z.string().min(2, "Species name is required"),
-  commonName: z.string().optional(),
-  scientificName: z.string().optional(),
-  locationName: z.string().min(2, "Location name is required"),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
+  speciesName: z.string().min(2, "Species name is required").max(100, "Species name too long"),
+  commonName: z.string().max(100, "Common name too long").optional(),
+  scientificName: z.string().max(100, "Scientific name too long").optional(),
+  locationName: z.string().min(2, "Location name is required").max(200, "Location name too long"),
+  latitude: z.number().min(-90).max(90).optional(),
+  longitude: z.number().min(-180).max(180).optional(),
   observationDate: z.date({
     required_error: "Observation date is required",
-  }),
-  observationTime: z.string().optional(),
-  count: z.number().min(1, "Count must be at least 1"),
+  }).refine((date) => date <= new Date(), "Date cannot be in the future"),
+  observationTime: z.string().regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format").optional(),
+  count: z.number().min(1, "Count must be at least 1").max(10000, "Count seems unrealistic"),
   breedingBehavior: z.boolean(),
-  notes: z.string().optional(),
-  photoUrl: z.string().optional(),
+  notes: z.string().max(1000, "Notes too long").optional(),
+  photoUrl: z.string().url("Invalid URL format").optional().or(z.literal("")),
 });
 
 type SightingData = z.infer<typeof sightingSchema>;

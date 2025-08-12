@@ -15,9 +15,9 @@ import { AuthModal } from "@/components/auth/AuthModal";
 import { supabase } from "@/integrations/supabase/client";
 
 const contributionSchema = z.object({
-  amount: z.number().min(1, "Amount must be at least ₹1"),
-  quantity: z.number().min(1, "Quantity must be at least 1").optional(),
-  message: z.string().optional(),
+  amount: z.number().min(1, "Amount must be at least ₹1").max(1000000, "Amount exceeds maximum limit"),
+  quantity: z.number().min(1, "Quantity must be at least 1").max(1000, "Quantity too large").optional(),
+  message: z.string().max(500, "Message too long").optional(),
 });
 
 type ContributionData = z.infer<typeof contributionSchema>;
